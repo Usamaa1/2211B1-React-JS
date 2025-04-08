@@ -178,37 +178,101 @@
 
 
 
-const products =[
-   [ 
-    {
-        prodName: 'Headphone',
-        prodCompany: 'Sony',
-        prodPrice: 34000
-    },
-    {
-        prodName: 'Mouse',
-        prodCompany: 'Dell',
-        prodPrice: 340
-    },
+const products = [
+    [
+        {
+            prodName: 'Headphone',
+            prodCompany: 'Sony',
+            prodPrice: 34000
+        },
+        {
+            prodName: 'Mouse',
+            prodCompany: 'Dell',
+            prodPrice: 340
+        },
     ],
-   [ 
-    {
-        prodName: 'LCD',
-        prodCompany: 'Samsung',
-        prodPrice: 4000
-    }
-]
+    [
+        {
+            prodName: 'LCD',
+            prodCompany: 'Samsung',
+            prodPrice: 4000
+        },
+        {
+            prodName: 'Keyboard',
+            prodCompany: 'HP',
+            prodPrice: 300
+        }
+    ]
 ]
 
 
-products.map((prod)=>{
-    
-container.innerHTML += `
+
+
+const [electronics, appliances] = products
+
+
+const all = [...electronics,...appliances];
+
+console.log(all)
+all.map((prod) => {
+
+    container.innerHTML += `
 <h1>${prod.prodName}</h1>
 <h2>${prod.prodCompany}</h2>
 <h3>${prod.prodPrice}</h3>
 <hr>
 `
 })
+
+
+let btn1 = document.getElementById('btn1')
+let btn2 = document.getElementById('btn2')
+
+
+btn1.addEventListener('click', () => {
+    container.innerHTML = ``;
+    electronics.map((prod) => {
+
+        container.innerHTML += `
+<h1>${prod.prodName}</h1>
+<h2>${prod.prodCompany}</h2>
+<h3>${prod.prodPrice}</h3>
+<hr>
+`
+    })
+})
+btn2.addEventListener('click', () => {
+    container.innerHTML = ``;
+    appliances.map((prod) => {
+
+        container.innerHTML += `
+<h1>${prod.prodName}</h1>
+<h2>${prod.prodCompany}</h2>
+<h3>${prod.prodPrice}</h3>
+<hr>
+`
+    })
+})
+// products.map((prod) => {
+
+//     container.innerHTML += `
+// <h1>${prod.prodName}</h1>
+// <h2>${prod.prodCompany}</h2>
+// <h3>${prod.prodPrice}</h3>
+// <hr>
+// `
+// })
+
+
+
+// products.map((prod) => {
+
+//     container.innerHTML += `
+// <h1>${prod.prodName}</h1>
+// <h2>${prod.prodCompany}</h2>
+// <h3>${prod.prodPrice}</h3>
+// <hr>
+// `
+// })
 
 
