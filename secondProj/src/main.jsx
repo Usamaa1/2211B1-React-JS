@@ -1,10 +1,14 @@
+import './index.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import MyNav from './nav'
 import Example from './profile'
-import './index.css'
 import ShowImage from './showImage'
+import Room from './room'
+import MyForm from './MyForm'
+import MyUseEffect from './myUseEffect'
+import MyUseRef from './myUseRef'
 
 
 export default function App() {
@@ -59,7 +63,13 @@ export default function App() {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
   
-    <App />
-    <Example />
+    {/* <App />
+    <Example /> */}
+
+    <Room></Room>
+
+    {/* <MyForm ></MyForm> */}
+    <MyUseEffect></MyUseEffect>
+    <MyUseRef></MyUseRef>
   </StrictMode>,
 )

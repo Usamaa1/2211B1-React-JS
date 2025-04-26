@@ -1,9 +1,7 @@
-
 import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, Radio, RadioGroup } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { StarIcon } from '@heroicons/react/20/solid'
-import firstImage from './images/1.jpg';
 
 const product = {
   name: 'Basic Tee 6-Pack ',
@@ -30,7 +28,7 @@ const product = {
   ],
 }
 
-function className(...classes) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -40,8 +38,7 @@ export default function Example() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
   return (
-    <>
-       <Dialog open={open} onClose={setOpen} className="relative z-10">
+    <Dialog open={open} onClose={setOpen} className="relative z-10">
       <DialogBackdrop
         transition
         className="fixed inset-0 hidden bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in md:block"
@@ -88,7 +85,7 @@ export default function Example() {
                             <StarIcon
                               key={rating}
                               aria-hidden="true"
-                              className={className(
+                              className={classNames(
                                 product.rating > rating ? 'text-gray-900' : 'text-gray-200',
                                 'size-5 shrink-0',
                               )}
@@ -123,14 +120,14 @@ export default function Example() {
                               key={color.name}
                               value={color}
                               aria-label={color.name}
-                              className={className(
+                              className={classNames(
                                 color.selectedClass,
                                 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-hidden data-checked:ring-2 data-focus:data-checked:ring-3 data-focus:data-checked:ring-offset-1',
                               )}
                             >
                               <span
                                 aria-hidden="true"
-                                className={className(color.class, 'size-8 rounded-full border border-black/10')}
+                                className={classNames(color.class, 'size-8 rounded-full border border-black/10')}
                               />
                             </Radio>
                           ))}
@@ -156,7 +153,7 @@ export default function Example() {
                               key={size.name}
                               value={size}
                               disabled={!size.inStock}
-                              className={className(
+                              className={classNames(
                                 size.inStock
                                   ? 'cursor-pointer bg-white text-gray-900 shadow-xs'
                                   : 'cursor-not-allowed bg-gray-50 text-gray-200',
@@ -204,6 +201,5 @@ export default function Example() {
         </div>
       </div>
     </Dialog>
-    </>
   )
 }
