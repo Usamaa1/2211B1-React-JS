@@ -9,7 +9,7 @@ import Room from './room'
 import MyForm from './MyForm'
 import MyUseEffect from './myUseEffect'
 import MyUseRef from './myUseRef'
-
+import AddPosts from './posts/addPosts'
 
 export default function App() {
   return (
@@ -66,10 +66,12 @@ createRoot(document.getElementById('root')).render(
     {/* <App />
     <Example /> */}
 
-    <Room></Room>
+    <AddPosts></AddPosts>
+
 
     {/* <MyForm ></MyForm> */}
-    <MyUseEffect></MyUseEffect>
-    <MyUseRef></MyUseRef>
+    {/* <MyUseEffect></MyUseEffect>
+    <MyUseRef></MyUseRef> */}
+
   </StrictMode>,
 )
