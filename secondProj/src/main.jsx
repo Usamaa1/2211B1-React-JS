@@ -10,6 +10,7 @@ import MyForm from './MyForm'
 import MyUseEffect from './myUseEffect'
 import MyUseRef from './myUseRef'
 import AddPosts from './posts/addPosts'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 
 export default function App() {
   return (
@@ -60,13 +61,36 @@ export default function App() {
   )
 }
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App/>
+  },
+  {
+    path: '/room',
+    element: <Room/>
+  },
+  {
+    path: '/myform',
+    element: <MyForm/>
+  },
+  {
+    path: '/post',
+    element: <AddPosts/>
+  },
+])
+
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  
+
     {/* <App />
     <Example /> */}
 
-    <AddPosts></AddPosts>
+    <RouterProvider router={router}></RouterProvider>
+
+    {/* <AddPosts></AddPosts> */}
 
 
     {/* <MyForm ></MyForm> */}
