@@ -11,12 +11,16 @@ import MyUseEffect from './myUseEffect'
 import MyUseRef from './myUseRef'
 import AddPosts from './posts/addPosts'
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import BootstrapNav from './bootstrapNav'
+import AppLayout from './AppLayout'
+import PageNotFound from './PageNotFound'
 
 export default function App() {
   return (
 
     <>
-    <MyNav ></MyNav>
+    {/* <MyNav ></MyNav> */}
+    {/* <BootstrapNav></BootstrapNav> */}
     <ShowImage></ShowImage>
     <h1 className="text-3xl font-bold underline">
       Hello world!
@@ -61,23 +65,59 @@ export default function App() {
   )
 }
 
+// const router = createBrowserRouter([
+//   {
+//     path: '/',
+//     element: <App />,
+//     // loader: 
+//   },
+//   // {
+//   //   path: '/',
+//   //   element: <div>fsdfsdfsds</div>
+//   // },
+//   {
+//     path: '/room',
+//     element: <Room/>
+//   },
+//   {
+//     path: '/myform',
+//     element: <MyForm/>
+//   },
+//   {
+//     path: '/post',
+//     element: <AddPosts/>
+//   },
+//   // {
+//   //   path: '/post',
+//   //   Component: AddPosts
+//   // },
+// ])
+
+
+
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App/>
-  },
-  {
-    path: '/room',
-    element: <Room/>
-  },
-  {
-    path: '/myform',
-    element: <MyForm/>
-  },
-  {
-    path: '/post',
-    element: <AddPosts/>
-  },
+    Component: AppLayout,
+    children:[
+      {
+        index: true,
+        Component: App
+      },
+      {
+        path:"/room",
+        Component: Room
+      },
+      {
+        path: "/post",
+        Component: AddPosts
+      },
+      {
+        path: "*",
+        Component: PageNotFound
+      }
+    ]
+  }
 ])
 
 
