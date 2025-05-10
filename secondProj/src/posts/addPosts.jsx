@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import axios from 'axios';
+import LoadingPage from '../LoadingPage';
 
 const AddPosts = () => {
 
@@ -49,6 +50,9 @@ const AddPosts = () => {
 
 
     return <>
+
+
+
         <h1>AddPosts</h1>
 
         {/* <button onClick={getPosts}>Click Me</button> */}
@@ -57,8 +61,8 @@ const AddPosts = () => {
             {isLoading ? (<h2>Loading.....</h2>): (<h2></h2>)}
 
             {allPosts.map((singlePost) => (
-       
-
+                
+                
                 <div className="card" key={singlePost.id}>
                     <h5 className="card-header">{singlePost.name}</h5>
                     <div className="card-body">
@@ -66,13 +70,18 @@ const AddPosts = () => {
                         <p className="card-text">{singlePost.description}</p>
 
                     </div>
-                    <button onClick={()=>deletepost(singlePost.id)} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Delete</button>
+                    <button onClick={()=>deletepost(singlePost.id)} 
+                    //className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
+                    className='btn btn-danger'
+                    >Delete</button>
+                    <button></button>
                     <hr />
                 </div>
            
-            ))}
+        ))}
 
         </div>
+  
 
     </>
 

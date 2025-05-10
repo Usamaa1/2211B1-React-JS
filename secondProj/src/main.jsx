@@ -1,19 +1,20 @@
 import './index.css'
-import { StrictMode } from 'react'
+import { StrictMode, Suspense, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import MyNav from './nav'
 import Example from './profile'
 import ShowImage from './showImage'
-import Room from './room'
+// import Room from './room'
 import MyForm from './MyForm'
 import MyUseEffect from './myUseEffect'
 import MyUseRef from './myUseRef'
-import AddPosts from './posts/addPosts'
+// import AddPosts from './posts/addPosts'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import BootstrapNav from './bootstrapNav'
 import AppLayout from './AppLayout'
-import PageNotFound from './PageNotFound'
+// import PageNotFound from './PageNotFound'
+import LoadingPage from './LoadingPage'
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
     <>
     {/* <MyNav ></MyNav> */}
     {/* <BootstrapNav></BootstrapNav> */}
+
+    
     <ShowImage></ShowImage>
     <h1 className="text-3xl font-bold underline">
       Hello world!
@@ -40,14 +43,14 @@ export default function App() {
             type="text"
             placeholder="0.00"
             className="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
-          />
+            />
           <div className="grid shrink-0 grid-cols-1 focus-within:relative">
             <select
               id="currency"
               name="currency"
               aria-label="Currency"
               className="col-start-1 row-start-1 w-full appearance-none rounded-md py-1.5 pl-3 pr-7 text-base text-gray-500 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-            >
+              >
               <option>USD</option>
               <option>CAD</option>
               <option>EUR</option>
@@ -55,7 +58,7 @@ export default function App() {
             <ChevronDownIcon
               aria-hidden="true"
               className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-            />
+              />
           </div>
         </div>
       </div>
@@ -93,6 +96,15 @@ export default function App() {
 //   // },
 // ])
 
+const PageNotFound = lazy(()=> import('./PageNotFound'))
+const Rooms = lazy(()=> import('./room'))
+const Posts = lazy(()=> import('./posts/addPosts'))
+const Apps = lazy(()=> import('./main'))
+
+
+
+
+
 
 
 const router = createBrowserRouter([
@@ -102,15 +114,23 @@ const router = createBrowserRouter([
     children:[
       {
         index: true,
-        Component: App
+        Component: Apps
       },
       {
         path:"/room",
-        Component: Room
+        Component: Rooms
+      },
+      {
+        path:"/room/:id",
+        Component: Rooms
       },
       {
         path: "/post",
-        Component: AddPosts
+        Component: Posts
+      },
+      {
+        path: "/loadingPage",
+        Component: LoadingPage
       },
       {
         path: "*",
@@ -128,7 +148,10 @@ createRoot(document.getElementById('root')).render(
     {/* <App />
     <Example /> */}
 
+
+
     <RouterProvider router={router}></RouterProvider>
+
 
     {/* <AddPosts></AddPosts> */}
 
