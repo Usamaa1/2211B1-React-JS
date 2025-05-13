@@ -1,11 +1,13 @@
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect, Suspense, useContext } from 'react'
 import axios from 'axios';
 import LoadingPage from '../LoadingPage';
+import { GlobalContext } from '../contextAPI/context';
 
 const AddPosts = () => {
 
     const [allPosts, setAllPost] = useState([]);
     const [isLoading, setLoading] = useState(false);
+    const {theme} = useContext(GlobalContext);
 
     const getPosts = async () => {
         try {
@@ -59,6 +61,7 @@ const AddPosts = () => {
 
         <div className="container">
             {isLoading ? (<h2>Loading.....</h2>): (<h2></h2>)}
+            <h3>The Current Theme is: {theme}</h3>
 
             {allPosts.map((singlePost) => (
                 

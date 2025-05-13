@@ -15,6 +15,8 @@ import BootstrapNav from './bootstrapNav'
 import AppLayout from './AppLayout'
 // import PageNotFound from './PageNotFound'
 import LoadingPage from './LoadingPage'
+import ContextProvider from './contextAPI/context'
+
 
 export default function App() {
   return (
@@ -147,10 +149,13 @@ createRoot(document.getElementById('root')).render(
 
     {/* <App />
     <Example /> */}
-
-
-
+<ContextProvider>
     <RouterProvider router={router}></RouterProvider>
+
+</ContextProvider>
+
+
+  
 
 
     {/* <AddPosts></AddPosts> */}
