@@ -1,5 +1,5 @@
 import './index.css'
-import { StrictMode, Suspense, lazy } from 'react'
+import { StrictMode, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import MyNav from './nav'
@@ -14,8 +14,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import BootstrapNav from './bootstrapNav'
 import AppLayout from './AppLayout'
 // import PageNotFound from './PageNotFound'
-import LoadingPage from './LoadingPage'
-import ContextProvider from './contextAPI/context'
+import LoadingPage  from './LoadingPage'
+import ContextProvider, { GlobalContext } from './contextAPI/context'
 
 
 export default function App() {
@@ -149,10 +149,12 @@ createRoot(document.getElementById('root')).render(
 
     {/* <App />
     <Example /> */}
-<ContextProvider>
-    <RouterProvider router={router}></RouterProvider>
 
-</ContextProvider>
+      <ContextProvider>
+        <RouterProvider router={router}></RouterProvider>
+
+      </ContextProvider>
+
 
 
   

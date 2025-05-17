@@ -8,7 +8,11 @@ import { GlobalContext } from "./contextAPI/context";
 const Room = ()=>
     {
 
-      const {theme, setTheme} = useContext(GlobalContext);
+
+
+      const {theme} = useContext(GlobalContext);
+
+
 
       // console.log(theme)
 
@@ -26,9 +30,8 @@ const Room = ()=>
    
 
         <div className={isLit ? 'lit' : 'dark'}>the room is {isLit ? 'lit' : 'dark'}</div>
-        <h3>The current theme is : {theme}</h3>
-
-        <button className="btn btn-dark" onClick={()=> theme == 'light' ? setTheme('dark') : setTheme('light')}>Change Theme</button>
+     
+        <div>Theme is : {theme}</div>
         
         <button className='btn btn-blue' onClick={()=>{setLit(!isLit)}}>flip</button>
         <button className="btn btn-warning" onClick={()=>{

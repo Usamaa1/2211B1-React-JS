@@ -7,7 +7,9 @@ const AddPosts = () => {
 
     const [allPosts, setAllPost] = useState([]);
     const [isLoading, setLoading] = useState(false);
-    const {theme} = useContext(GlobalContext);
+
+    // const {theme, setTheme} = useContext(GlobalContext);
+    const {state, dispatch} = useContext(GlobalContext);
 
     const getPosts = async () => {
         try {
@@ -61,7 +63,12 @@ const AddPosts = () => {
 
         <div className="container">
             {isLoading ? (<h2>Loading.....</h2>): (<h2></h2>)}
-            <h3>The Current Theme is: {theme}</h3>
+
+            {/* <h3>The theme is : {theme}</h3> */}
+            <h3>The theme is : {state.theme}</h3>
+
+            {/* <button onClick={()=> theme =='light' ? setTheme('dark') : setTheme('light')} className='btn btn-dark'>Change Theme</button> */}
+      
 
             {allPosts.map((singlePost) => (
                 

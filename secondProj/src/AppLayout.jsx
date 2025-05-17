@@ -2,7 +2,6 @@ import React, { Suspense } from 'react'
 import { Outlet } from 'react-router'
 import BootstrapNav from './bootstrapNav'
 import LoadingPage from './LoadingPage'
-import ContextProvider from './contextAPI/context'
 
 
 export default function AppLayout() {
